@@ -757,6 +757,17 @@ http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (==1.*)"]
 
 [[package]]
+name = "huggingface"
+version = "0.0.1"
+description = "HuggingFace is a single library comprising the main HuggingFace libraries."
+optional = false
+python-versions = "*"
+files = [
+    {file = "huggingface-0.0.1-py3-none-any.whl", hash = "sha256:98a3409537557cd2fd768997ef94cab08529f86c5e106e6d54bbabdd5ee03910"},
+    {file = "huggingface-0.0.1.tar.gz", hash = "sha256:0a2f228fd956801d68b7c6a8bef478dfa60c4b7d7eba572ea7de39ecf87e505a"},
+]
+
+[[package]]
 name = "idna"
 version = "3.7"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -3007,4 +3018,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "aefd1aa8037fc005ac9869de38a891d3ec99d0f5643a9ebd31089547b9d1082c"
+content-hash = "f5142f60c2ad7e4ea751b21a24c3e965ec522dd789d413d8d346b369a31f5300"
