@@ -89,19 +89,19 @@ class TokenizerPipeline:
         
         return tokenized_data
 
+    def save_tokenized_data(self, tokenized_data: Dict[str, List[List[str]]], output_path: str) -> None:
+        save_to_json(tokenized_data, output_path)
+
 if __name__ == "__main__":
-    file_path = "/home/ishan-pc/Desktop/Ishan-Github/LLM/Tokenizers/data/introduction.txt"
-    output_path = "output/tokenized_data_english.json"
-    
-    all_tokenized_data: Dict[str, List[List[str]]] = {}
+    file_path = "/home/ishan-pc/Desktop/Ishan-Github/LLM/Tokenizers/nepali_dataset.txt"
     
     char_tokenizer = CharacterTokenizer()
     char_pipeline = TokenizerPipeline(char_tokenizer, "CharacterTokenizer")
-    all_tokenized_data.update(char_pipeline.run([file_path], file_path))
+    char_tokenized_data = char_pipeline.run([file_path], file_path)
+    char_pipeline.save_tokenized_data(char_tokenized_data, "output/tokenized_data_character.json")
     
     for model_type in ['bpe', 'wordpiece', 'unigram', 'sentencepiece']:
         subword_tokenizer = SubwordTokenizer(model_type=model_type)
         subword_pipeline = TokenizerPipeline(subword_tokenizer, model_type.capitalize() + "Tokenizer")
-        all_tokenized_data.update(subword_pipeline.run([file_path], file_path))
-    
-    save_to_json(all_tokenized_data, output_path)
+        subword_tokenized_data = subword_pipeline.run([file_path], file_path)
+        subword_pipeline.save_tokenized_data(subword_tokenized_data, f"output/tokenized_data_{model_type}.json")
